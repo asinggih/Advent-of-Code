@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+
+# Kotlin .gitignore
+.gradle
+.idea
+build
+
+
+# input file 
+*.txt
