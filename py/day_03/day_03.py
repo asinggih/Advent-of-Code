@@ -22,16 +22,12 @@ def solve_part1(problem_set: list) -> int:
     total = 0
     for rucksack in problem_set:
         midpoint = int(len(rucksack) / 2)
-        first_compartment = rucksack[:midpoint]
+        first_compartment = set(rucksack[:midpoint])
         second_compartment = set(rucksack[midpoint:])
 
-        inner_join = None
-        for item in first_compartment:
-            if item in second_compartment:
-                inner_join = item
-                break
+        intersection = first_compartment.intersection(second_compartment).pop()
 
-        total += values[inner_join]
+        total += values[intersection]
 
     return total
 
@@ -42,17 +38,13 @@ def solve_part2(problem_set: list) -> int:
 
     total = 0
     for idx in range(0, len(problem_set), window):
-        first_group = problem_set[idx]
+        first_group = set(problem_set[idx])
         second_group = set(problem_set[idx+1])
         third_group = set(problem_set[idx+2])
 
-        inner_join = None
-        for item in first_group:
-            if item in second_group and item in third_group:
-                inner_join = item
-                break
+        intersection = first_group.intersection(second_group).intersection(third_group).pop()
 
-        total += values[inner_join]
+        total += values[intersection]
 
     return total
 
